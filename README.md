@@ -15,7 +15,7 @@ Aplicar conceitos e métodos de Análise de Dados e Predição da Inteligência 
 
 
 ### 💾 Base de Dados - Top Games on Google Play
-![image](https://storage.googleapis.com/kaggle-datasets-images/1260671/2101731/3c95196b9b77561f614b403ea3568c37/dataset-cover.jpg?t=2021-04-09-13-22-41)
+![banner_controle](https://user-images.githubusercontent.com/85514585/200052493-a4887c72-b9ce-4fbf-b7cd-f96c7545d71d.jpg)
 Escolhemos para o trabalho um [dataset público](https://www.kaggle.com/datasets/kboghe/android-apps-metadata?select=Android+apps+csv.csv) do [Kaggle](https://www.kaggle.com/).  
 Nele contém mais de 50.000 linhas e 33 colunas.  
 O escopo da análise é "Top Jogos da Google Play", então, após filtrar os dados por "apenas jogos" e "apenas fonte Google Play", teremos um dataset com pouco mais de 9.000 linhas.  
