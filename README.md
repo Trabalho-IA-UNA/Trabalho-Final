@@ -109,7 +109,8 @@ O escopo da análise é "Top Jogos da Google Play", então, após filtrar os dad
 
 ## :man_student: Integrantes:
 - [Almir Junior](https://github.com/AlmirJNR) - :pencil: Sistemas de Informação
-- [Davi Afonso](https://github.com/DaviAfonso88) - :pencil: Sistemas de Informação
+- [Davi Afonso](https://github.com/gabrielrabelomachadosantos) - :pencil: Sistemas de Informação
+- [Gabriel Santos](https://github.com/Pedro-Barros77) - :pencil: Sistemas de Informação
 - [Mathaus Puff](https://github.com/mathauspuffdesouza) - :pencil: Sistemas de Informação
 - [Pedro Barros](https://github.com/Pedro-Barros77) - :pencil: Sistemas de Informação
 
