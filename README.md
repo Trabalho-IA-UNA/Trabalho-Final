@@ -183,8 +183,8 @@
 
 ## :man_student: Integrantes
 
-| [<img src="https://avatars.githubusercontent.com/u/72845631?v=4" width=115><br><sub>Almir Junior</sub>](https://github.com/AlmirJNR) |  [<img src="https://avatars.githubusercontent.com/u/89953265?v=4" width=115><br><sub>Davi Afonso</sub>](https://github.com/DaviAfonso88) |  [<img src="https://avatars.githubusercontent.com/u/85748917?v=4" width=115><br><sub>Gabriel Santos</sub>](https://github.com/gabrielrabelomachadosantos) |  [<img src="https://avatars.githubusercontent.com/u/90942975?v=4" width=115><br><sub>Mathaus Puff</sub>](https://github.com/mathauspuffdesouza) |  [<img src="https://avatars.githubusercontent.com/u/85514585?v=4" width=115><br><sub>Pedro Barros</sub>](https://github.com/Pedro-Barros77) |
-| :---: | :---: | :---: | :---: | :---: |
+| [<img src="https://avatars.githubusercontent.com/u/72845631?v=4" width=115><br><sub>Almir Junior</sub>](https://github.com/AlmirJNR) |  [<img src="https://avatars.githubusercontent.com/u/89953265?v=4" width=115><br><sub>Davi Afonso</sub>](https://github.com/DaviAfonso88) |  [<img src="https://avatars.githubusercontent.com/u/85748917?v=4" width=115><br><sub>Gabriel Santos</sub>](https://github.com/gabrielrabelomachadosantos) |  [<img src="https://avatars.githubusercontent.com/u/90942975?v=4" width=115><br><sub>Mathaus Puff</sub>](https://github.com/mathauspuffdesouza) |  [<img src="https://avatars.githubusercontent.com/u/85514585?v=4" width=115><br><sub>Pedro Barros</sub>](https://github.com/Pedro-Barros77) | [<img src="https://avatars.githubusercontent.com/u/40840964?v=4" width=115><br><sub>Carlos Eduardo</sub>](https://github.com/caduuh)
+| :---: | :---: | :---: | :---: | :---: | :--: |
 
 
 
