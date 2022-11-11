@@ -1,7 +1,6 @@
-from application import repository_appservice as repo_appservice
+from application import repository_appservice as repo_appservice, regression_appservice
 
-df = repo_appservice.get_treated_dataset(True)
+df = repo_appservice.get_treated_dataset()
 
-print(df.info())
-
-print(df.head())
+linear = regression_appservice.linear(df)
+linear.print_overview()
