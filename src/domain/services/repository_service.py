@@ -1,5 +1,6 @@
 import os.path as path
 import pandas as pd
+import numpy as np
 
 from infrastructure import repository
 from domain.utils import constants
@@ -55,6 +56,24 @@ def treat_dataset(new_path):
     df['price'] = df['price'].apply(lambda item: value_or_zero(item,'free'))
     # mapping reviews to int
     df['numberreviews'] = df['numberreviews'].apply(lambda item: int(str(item).replace(',', '')))
+    
+    # column names of start reviews
+    star_nums = ["five", "four", "three", "two", "one"]
+    stars = df[star_nums]
+
+    def get_percentage(row):
+        _row = row.astype(np.float16)
+        for i in range(len(_row)):
+            _row[i] /= sum(_row)
+        
+        return _row
+
+    # converts relative proportion to percentage
+    stars = stars.apply(get_percentage, axis = 1)
+
+    # #removes old star reviews and add the new ones
+    df.drop(star_nums,axis=1,inplace=True)
+    df = pd.concat([df,stars],axis=1)
 
     # saves the formatted version to a CSV
     df.to_csv(new_path, index=False, sep=';')
