@@ -1,8 +1,9 @@
 import pandas as pd
 import numpy as np
 
-from domain.models.results import LinearRegressionResult
+from domain.models.results import LinearRegressionResult, LogisticRegressionResult
 from domain.services import regression_service
+
 
 def handle_text(dataset: pd.DataFrame):
     """Prepares dataset for regression algorithms, handling or removing text columns.
@@ -33,7 +34,7 @@ def linear(dataset: pd.DataFrame, dataset_usage: float = 0.7) -> LinearRegressio
 
     Args:
         dataset (pd.DataFrame): The DataFrame containing the data to train on.
-        dataset_usage (float, optional): Percentage of the dataframe (0-1) to use for training. Defaults to 1 (100%).
+        dataset_usage (float, optional): Percentage of the dataframe (0-1) to use for training. Defaults to 0.7 (70%).
 
     Returns:
         LinearRegressionResult: A class object containig results data.
@@ -45,8 +46,16 @@ def linear(dataset: pd.DataFrame, dataset_usage: float = 0.7) -> LinearRegressio
     
     return result
 
-def logistic(dataset: pd.DataFrame, dataset_usage: float = 0.7):
-    
+def logistic(dataset: pd.DataFrame, dataset_usage: float = 0.7) -> LogisticRegressionResult:
+    """Executes Logistic Regression on given DataFrame
+
+    Args:
+        dataset (pd.DataFrame): The DataFrame containing the data to train on.
+        dataset_usage (float, optional): Percentage of the dataframe (0-1) to use for training. Defaults to 0.7 (70%).
+
+    Returns:
+        LogisticRegressionResult: A class object containig results data.
+    """
     df = handle_text(dataset)
     
     # creating the classification column

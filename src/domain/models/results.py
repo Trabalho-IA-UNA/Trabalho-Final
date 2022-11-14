@@ -1,9 +1,39 @@
 import pandas as pd
 
-class LinearRegressionResult:
+
+class Report:
+    def __init__(self):
+        self.classification_report = None
+        self.normalized_data: pd.DataFrame = None
+        self.confusion_matrix = []
+        self.score = 0
+        
+    def print_reports(self):
+        print("-> Dataset Normalizado usado para treinamento:\n")
+        
+        _max_col_len = max([len(col) for col in self.normalized_data])
+        
+        print(' #  ', 'Coluna', ' '*(_max_col_len-6), '  Tipo')
+        print('--- ', '------', ' '*(_max_col_len-6), '  ----')
+        for (i, col) in enumerate(self.normalized_data):
+            _index = str(i+1)
+            print(' ' + _index + ' '*(3-len(_index)), col, ' '*(_max_col_len - len(col)), f'- {self.normalized_data[col].dtype}')
+        
+        print('\n-> Relatório de Classificação:\n')
+        print(self.classification_report)
+        
+        print(f"Precisão: {self.score} ({round(self.score*100, 2)}%)")
+        
+        print('\n-> Matriz de Confusão:\n')
+        print('V Pos | F Pos')
+        print('F Neg | V Neg')
+        print('')
+        print(self.confusion_matrix)
+         
+
+class LinearRegressionResult(Report):
     def __init__(self):
         self.coefficients: pd.DataFrame = []
-        self.normalized_data: pd.DataFrame = None
         self.MAE_metrics = 0
         self.MSE_metrics = 0
         self.RMSE_metrics = 0
@@ -22,16 +52,9 @@ class LinearRegressionResult:
     
     def print_overview(self):
         print("\n...Regressão Linear Finalizada...\n")
-        print("-> Dataset Normalizado usado para treinamento:\n")
         
-        _max_col_len = max([len(col) for col in self.normalized_data])
-        
-        print(' #  ', 'Coluna', ' '*(_max_col_len-6), '  Tipo')
-        print('--- ', '------', ' '*(_max_col_len-6), '  ----')
-        for (i, col) in enumerate(self.normalized_data):
-            _index = str(i+1)
-            print(' ' + _index + ' '*(3-len(_index)), col, ' '*(_max_col_len - len(col)), f'- {self.normalized_data[col].dtype}')
-            
+        self.print_reports()
+           
         print('\n-> Coeficientes:\n')
         print(self.coefficients)
         
@@ -53,33 +76,26 @@ class LinearRegressionResult:
         
 
 
-class LogisticRegressionResult:
+class LogisticRegressionResult(Report):
     def __init__(self):
-        self.classification_report = None
-        self.normalized_data: pd.DataFrame = None
-        self.confusion_matrix = []
+        pass
     
     def print_overview(self):
         print("\n...Regressão Logística Finalizada...\n")
-        print("-> Dataset Normalizado usado para treinamento:\n")
-        
-        _max_col_len = max([len(col) for col in self.normalized_data])
-        
-        print(' #  ', 'Coluna', ' '*(_max_col_len-6), '  Tipo')
-        print('--- ', '------', ' '*(_max_col_len-6), '  ----')
-        for (i, col) in enumerate(self.normalized_data):
-            _index = str(i+1)
-            print(' ' + _index + ' '*(3-len(_index)), col, ' '*(_max_col_len - len(col)), f'- {self.normalized_data[col].dtype}')
 
-
-        print('\n-> Relatório de Classificação:\n')
-        print(self.classification_report)
+        self.print_reports()
         
-        print('\n-> Matriz de Confusão:\n')
-        print('V Pos | F Pos')
-        print('F Neg | V Neg')
-        print('')
-        print(self.confusion_matrix)
+        print('\n...Fim do Overview...')
+        
+        
+class KNNResult(Report):
+    def __init__(self):
+        pass
+    
+    def print_overview(self):
+        print("\n...KNN Finalizado...\n")
+
+        self.print_reports()
         
         print('\n...Fim do Overview...')
         
