@@ -51,3 +51,35 @@ class LinearRegressionResult:
         print(f'Root Mean Squared Error   (RMSE):  {self.RMSE_metrics}')
         print('\n...Fim do Overview...')
         
+
+
+class LogisticRegressionResult:
+    def __init__(self):
+        self.classification_report = None
+        self.normalized_data: pd.DataFrame = None
+        self.confusion_matrix = []
+    
+    def print_overview(self):
+        print("\n...Regressão Logística Finalizada...\n")
+        print("-> Dataset Normalizado usado para treinamento:\n")
+        
+        _max_col_len = max([len(col) for col in self.normalized_data])
+        
+        print(' #  ', 'Coluna', ' '*(_max_col_len-6), '  Tipo')
+        print('--- ', '------', ' '*(_max_col_len-6), '  ----')
+        for (i, col) in enumerate(self.normalized_data):
+            _index = str(i+1)
+            print(' ' + _index + ' '*(3-len(_index)), col, ' '*(_max_col_len - len(col)), f'- {self.normalized_data[col].dtype}')
+
+
+        print('\n-> Relatório de Classificação:\n')
+        print(self.classification_report)
+        
+        print('\n-> Matriz de Confusão:\n')
+        print('V Pos | F Pos')
+        print('F Neg | V Neg')
+        print('')
+        print(self.confusion_matrix)
+        
+        print('\n...Fim do Overview...')
+        

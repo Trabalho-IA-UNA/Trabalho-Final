@@ -2,5 +2,5 @@ from application import repository_appservice as repo_appservice, regression_app
 
 df = repo_appservice.get_treated_dataset()
 
-linear = regression_appservice.linear(df)
-linear.print_overview()
+logistic = regression_appservice.logistic(df)
+logistic.print_overview()
