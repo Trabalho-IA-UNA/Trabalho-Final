@@ -1,9 +1,6 @@
 import pandas as pd
 import numpy as np
 from sklearn import preprocessing
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.model_selection import train_test_split
 
 from domain.models.results import KNNResult
 from domain.services import k_algorithms_service
