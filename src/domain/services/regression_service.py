@@ -7,10 +7,6 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 from domain.models.results import LinearRegressionResult, LogisticRegressionResult
 
-def normalize(df: pd.DataFrame):
-    # normalizing dataframe
-    return (df-df.min())/(df.max()-df.min())
-
 def linear(dataset: pd.DataFrame, target:str, dataset_usage: float) -> LinearRegressionResult:
     """Executes Linear Regression on given DataFrame
 
@@ -24,11 +20,11 @@ def linear(dataset: pd.DataFrame, target:str, dataset_usage: float) -> LinearReg
     # instantiating class to store results
     result = LinearRegressionResult()
     
-    df = normalize(dataset)    
+    dataset = (dataset-dataset.min())/(dataset.max()-dataset.min()) 
     
     # x = training resources (predictor), y = target (predicted)
-    x = df.drop(target, axis=1, inplace=False)
-    y = df[target]
+    x = dataset.drop(target, axis=1, inplace=False)
+    y = dataset[target]
     
     # getting train and test data
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=dataset_usage, random_state=0)
@@ -43,6 +39,7 @@ def linear(dataset: pd.DataFrame, target:str, dataset_usage: float) -> LinearReg
     # predicting with the test row (x_test)
     predictions = linear_model.predict(x_test)
     
+    result.linear_reg_model = linear_model
     result.normalized_data = dataset
     result.score = linear_model.score(x_test, y_test)
     result.classification_report = classification_report(y_test,predictions)
@@ -74,9 +71,6 @@ def logistic(dataset: pd.DataFrame, target:str, dataset_usage: float) -> Logisti
     # instantiating class to store results
     result = LogisticRegressionResult()
     
-    # commented since normalization on logistic regression tends to worsen the precision
-    # dataset = normalize(dataset)  
-    
     # x = training resources, y = target
     x = dataset.drop(target, axis=1, inplace=False)
     y = dataset[target]
@@ -86,12 +80,12 @@ def logistic(dataset: pd.DataFrame, target:str, dataset_usage: float) -> Logisti
     
     # training and learning
     logistic_model = LogisticRegression(solver='lbfgs',max_iter=1000)
-
     logistic_model.fit(x_train,y_train)
     
     # predicting with the test row (x_test)
     predictions = logistic_model.predict(x_test)
     
+    result.logistic_reg_model = logistic_model
     result.normalized_data = dataset
     result.score = logistic_model.score(x_test, y_test)
     result.classification_report = classification_report(y_test,predictions)

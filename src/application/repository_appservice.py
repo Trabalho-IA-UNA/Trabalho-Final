@@ -1,5 +1,7 @@
 import os.path as path
 import pandas as pd
+import shutil
+
 
 from domain.services import repository_service
 from domain.utils import constants
@@ -23,3 +25,8 @@ def get_treated_dataset(overwrite_file = False):
     repository_service.treat_dataset(new_path)
     
     return pd.read_csv(new_path, sep=';')
+
+
+def clear_temp():
+    if(path.exists(constants.TEMP_PATH)):
+        shutil.rmtree(constants.TEMP_PATH)

@@ -4,6 +4,10 @@ DATA_PATH = 'src\\infrastructure\\data'
 DATASET_PATH = f'{DATA_PATH}\\android_apps_metadata.csv'
 """The project relative path to the original dataset CSV file."""
 
+
+TEMP_PATH = f'{DATA_PATH}\\temp'
+"""The project relative path to a folder inside 'data' to store temporary files."""
+
 DATASET_SEPARATOR = ';'
 """The separator used in the original dataset CSV file."""
 

@@ -1,5 +1,5 @@
 import pandas as pd
-
+from sklearn import tree, linear_model, neighbors
 
 class Report:
     def __init__(self):
@@ -33,6 +33,7 @@ class Report:
 
 class LinearRegressionResult(Report):
     def __init__(self):
+        self.linear_reg_model: linear_model.LinearRegression = None
         self.coefficients: pd.DataFrame = []
         self.MAE_metrics = 0
         self.MSE_metrics = 0
@@ -78,7 +79,7 @@ class LinearRegressionResult(Report):
 
 class LogisticRegressionResult(Report):
     def __init__(self):
-        pass
+        self.logistic_reg_model: linear_model.LogisticRegression = None
     
     def print_overview(self):
         print("\n...Regressão Logística Finalizada...\n")
@@ -90,10 +91,22 @@ class LogisticRegressionResult(Report):
         
 class KNNResult(Report):
     def __init__(self):
-        pass
+        self.knn_model: neighbors.KNeighborsClassifier = None
     
     def print_overview(self):
         print("\n...KNN Finalizado...\n")
+
+        self.print_reports()
+        
+        print('\n...Fim do Overview...')
+        
+        
+class DecisionTreeResult(Report):
+    def __init__(self):
+        self.tree_model: tree.DecisionTreeClassifier = None
+    
+    def print_overview(self):
+        print("\n...Árvore de Decisão Finalizada...\n")
 
         self.print_reports()
         
