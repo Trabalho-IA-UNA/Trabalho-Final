@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 from sklearn import preprocessing
 
-from domain.models.results import KNNResult
-from domain.services import k_algorithms_service
+from src.domain.models.results import KNNResult
+from src.domain.services import k_algorithms_service
 
 
 def knn(dataset: pd.DataFrame, num_neighbors:int = 3, dataset_usage: float = 0.7) -> KNNResult:

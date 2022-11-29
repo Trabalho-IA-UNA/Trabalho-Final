@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 
-from domain.models.results import LinearRegressionResult, LogisticRegressionResult
-from domain.services import regression_service
+from src.domain.models.results import LinearRegressionResult, LogisticRegressionResult
+from src.domain.services import regression_service
 
 
 def handle_text(dataset: pd.DataFrame):

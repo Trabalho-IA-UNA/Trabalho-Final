@@ -3,9 +3,9 @@ import numpy as np
 from sklearn import tree
 import graphviz
 
-from domain.utils import constants
-from domain.models.results import DecisionTreeResult
-from domain.services import decision_tree_service
+from src.domain.utils import paths
+from src.domain.models.results import DecisionTreeResult
+from src.domain.services import decision_tree_service
 
 
 def decision_tree(dataset: pd.DataFrame, tree_depth: int = 10, dataset_usage: float = 0.7,  open_file = False) -> DecisionTreeResult:

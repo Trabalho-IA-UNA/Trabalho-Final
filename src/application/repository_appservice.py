@@ -2,9 +2,9 @@ import os.path as path
 import pandas as pd
 import shutil
 
+from src.domain.services import repository_service
+from src.domain.utils import paths
 
-from domain.services import repository_service
-from domain.utils import constants
 
 
 def get_treated_dataset(overwrite_file = False):
