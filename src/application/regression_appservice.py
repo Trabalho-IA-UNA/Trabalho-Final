@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 
-from domain.models.results import LinearRegressionResult, LogisticRegressionResult
-from domain.services import regression_service
+from src.domain.models.results import LinearRegressionResult, LogisticRegressionResult
+from src.domain.services import regression_service
 
 
 def handle_text(dataset: pd.DataFrame):
@@ -15,18 +15,17 @@ def handle_text(dataset: pd.DataFrame):
         pd.DataFrame: The normalized dataframe.
     """
     # converts categories into columns (dummies)
-    categories = pd.get_dummies(dataset["category"],drop_first=True)
+    categories = pd.get_dummies(dataset["category"], drop_first=True)
     categories = pd.DataFrame.add_prefix(categories, 'category_')
 
     # drops text columns
-    dataset.drop(["fancyname","category","company"],axis=1,inplace=True)
+    dataset.drop(["fancyname", "category", "company"], axis=1, inplace=True)
     
     # drops score columns that are not the target
-    dataset.drop(["Downloads","numberreviews","five", "four", "three", "two", "one"],axis=1,inplace=True)
+    dataset.drop(["Downloads", "numberreviews", "five", "four", "three", "two", "one"], axis=1, inplace=True)
     
     # adds categories as dummies
-    return pd.concat([dataset,categories],axis=1)
-
+    return pd.concat([dataset, categories], axis=1)
 
 
 def linear(dataset: pd.DataFrame, dataset_usage: float = 0.7) -> LinearRegressionResult:
@@ -37,7 +36,7 @@ def linear(dataset: pd.DataFrame, dataset_usage: float = 0.7) -> LinearRegressio
         dataset_usage (float, optional): Percentage of the dataframe (0-1) to use for training. Defaults to 0.7 (70%).
 
     Returns:
-        LinearRegressionResult: A class object containig results data.
+        LinearRegressionResult: A class object containing results data.
     """
     
     df = handle_text(dataset)
@@ -45,6 +44,7 @@ def linear(dataset: pd.DataFrame, dataset_usage: float = 0.7) -> LinearRegressio
     result = regression_service.linear(df, "rating", dataset_usage)
     
     return result
+
 
 def logistic(dataset: pd.DataFrame, dataset_usage: float = 0.7) -> LogisticRegressionResult:
     """Executes Logistic Regression on given DataFrame
@@ -54,7 +54,7 @@ def logistic(dataset: pd.DataFrame, dataset_usage: float = 0.7) -> LogisticRegre
         dataset_usage (float, optional): Percentage of the dataframe (0-1) to use for training. Defaults to 0.7 (70%).
 
     Returns:
-        LogisticRegressionResult: A class object containig results data.
+        LogisticRegressionResult: A class object containing results data.
     """
     df = handle_text(dataset)
     
@@ -64,11 +64,3 @@ def logistic(dataset: pd.DataFrame, dataset_usage: float = 0.7) -> LogisticRegre
     result = regression_service.logistic(df, "top_rating", dataset_usage)
     
     return result
-
-
-
-
-
-
-
-

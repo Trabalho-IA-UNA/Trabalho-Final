@@ -5,17 +5,19 @@ from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn import metrics
 from sklearn.metrics import classification_report, confusion_matrix
 
-from domain.models.results import LinearRegressionResult, LogisticRegressionResult
+from src.domain.models.results import LinearRegressionResult, LogisticRegressionResult
 
-def linear(dataset: pd.DataFrame, target:str, dataset_usage: float) -> LinearRegressionResult:
+
+def linear(dataset: pd.DataFrame, target: str, dataset_usage: float) -> LinearRegressionResult:
     """Executes Linear Regression on given DataFrame
 
     Args:
-        df (pd.DataFrame): The DataFrame containing the data to train on.
+        dataset (pd.DataFrame): The DataFrame containing the data to train on.
+        target (str):
         dataset_usage (float): Percentage of the dataframe (0-1) to use for training.
 
     Returns:
-        LinearRegressionResult: A class object containig results data.
+        LinearRegressionResult: A class object containing results data.
     """
     # instantiating class to store results
     result = LinearRegressionResult()
@@ -31,10 +33,10 @@ def linear(dataset: pd.DataFrame, target:str, dataset_usage: float) -> LinearReg
     
     # training and learning
     linear_model = LinearRegression()
-    linear_model.fit(x_train,y_train)
+    linear_model.fit(x_train, y_train)
     
     # creating dataframe to visualize each column coefficient
-    coeff = pd.DataFrame(linear_model.coef_, x.columns,columns=['Coeficiente'])
+    coeff = pd.DataFrame(linear_model.coef_, x.columns, columns=['Coeficiente'])
     
     # predicting with the test row (x_test)
     predictions = linear_model.predict(x_test)
@@ -55,18 +57,16 @@ def linear(dataset: pd.DataFrame, target:str, dataset_usage: float) -> LinearReg
     return result
 
 
-
-
-
-def logistic(dataset: pd.DataFrame, target:str, dataset_usage: float) -> LogisticRegressionResult:
+def logistic(dataset: pd.DataFrame, target: str, dataset_usage: float) -> LogisticRegressionResult:
     """Executes Logistic Regression on given DataFrame
 
     Args:
-        df (pd.DataFrame): The DataFrame containing the data to train on.
+        dataset (pd.DataFrame): The DataFrame containing the data to train on.
+        target (str):
         dataset_usage (float): Percentage of the dataframe (0-1) to use for training.
 
     Returns:
-        LinearRegressionResult: A class object containig results data.
+        LinearRegressionResult: A class object containing results data.
     """
     # instantiating class to store results
     result = LogisticRegressionResult()
@@ -79,7 +79,7 @@ def logistic(dataset: pd.DataFrame, target:str, dataset_usage: float) -> Logisti
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=dataset_usage, random_state=0)
     
     # training and learning
-    logistic_model = LogisticRegression(solver='lbfgs',max_iter=1000)
+    logistic_model = LogisticRegression(solver='lbfgs', max_iter=1000)
     logistic_model.fit(x_train,y_train)
     
     # predicting with the test row (x_test)
@@ -88,16 +88,7 @@ def logistic(dataset: pd.DataFrame, target:str, dataset_usage: float) -> Logisti
     result.logistic_reg_model = logistic_model
     result.normalized_data = dataset
     result.score = logistic_model.score(x_test, y_test)
-    result.classification_report = classification_report(y_test,predictions)
+    result.classification_report = classification_report(y_test, predictions)
     result.confusion_matrix = confusion_matrix(y_test, predictions, labels=[True, False])
     
     return result
-    
-
-
-
-
-
-
-
-

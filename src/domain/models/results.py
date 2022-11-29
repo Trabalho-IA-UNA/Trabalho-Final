@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn import tree, linear_model, neighbors
 
+
 class Report:
     def __init__(self):
         self.classification_report = None
@@ -33,6 +34,7 @@ class Report:
 
 class LinearRegressionResult(Report):
     def __init__(self):
+        super().__init__()
         self.linear_reg_model: linear_model.LinearRegression = None
         self.coefficients: pd.DataFrame = []
         self.MAE_metrics = 0
@@ -74,11 +76,11 @@ class LinearRegressionResult(Report):
         print(f'Mean Squared Error         (MSE):  {self.MSE_metrics}')
         print(f'Root Mean Squared Error   (RMSE):  {self.RMSE_metrics}')
         print('\n...Fim do Overview...')
-        
 
 
 class LogisticRegressionResult(Report):
     def __init__(self):
+        super().__init__()
         self.logistic_reg_model: linear_model.LogisticRegression = None
     
     def print_overview(self):
@@ -91,6 +93,7 @@ class LogisticRegressionResult(Report):
         
 class KNNResult(Report):
     def __init__(self):
+        super().__init__()
         self.knn_model: neighbors.KNeighborsClassifier = None
     
     def print_overview(self):
@@ -103,6 +106,7 @@ class KNNResult(Report):
         
 class DecisionTreeResult(Report):
     def __init__(self):
+        super().__init__()
         self.tree_model: tree.DecisionTreeClassifier = None
     
     def print_overview(self):
