@@ -3,8 +3,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split
 
-from domain.models.results import KNNResult
-
+from src.domain.models.results import KNNResult
 
 
 def knn(dataset: pd.DataFrame, target: str, num_neighbors:int, dataset_usage: float) -> KNNResult:

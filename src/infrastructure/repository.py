@@ -1,6 +1,4 @@
 import pandas as pd
-from domain.utils import constants
-import os.path as path
 
 
 def import_dataset(dataset_path, separator, cols = None):

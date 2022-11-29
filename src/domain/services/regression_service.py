@@ -5,7 +5,7 @@ from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn import metrics
 from sklearn.metrics import classification_report, confusion_matrix
 
-from domain.models.results import LinearRegressionResult, LogisticRegressionResult
+from src.domain.models.results import LinearRegressionResult, LogisticRegressionResult
 
 def linear(dataset: pd.DataFrame, target:str, dataset_usage: float) -> LinearRegressionResult:
     """Executes Linear Regression on given DataFrame

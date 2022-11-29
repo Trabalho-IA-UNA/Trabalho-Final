@@ -3,7 +3,7 @@ from sklearn import tree
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix
 
-from domain.models.results import DecisionTreeResult
+from src.domain.models.results import DecisionTreeResult
 
 
 def decision_tree(dataset: pd.DataFrame, target: str, tree_depth: int, dataset_usage: float) -> DecisionTreeResult:

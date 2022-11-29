@@ -2,8 +2,9 @@ import os.path as path
 import pandas as pd
 import numpy as np
 
-from infrastructure import repository
-from domain.utils import constants
+from src.infrastructure import repository
+from src.domain.utils import constants
+from src.domain.utils import paths
 
 def import_dataset(cols=None):
     """Imports the CSV file from the configurated path.
