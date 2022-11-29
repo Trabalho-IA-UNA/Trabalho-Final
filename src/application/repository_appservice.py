@@ -8,11 +8,12 @@ from src.domain.services import repository_service
 from src.domain.utils import paths
 
 
-def get_treated_dataset(overwrite_file = False):
+def get_treated_dataset(overwrite_file=False):
     """Imports the treated dataset with only the columns in the project scope.
 
     Args:
-        overwrite_file (bool, optional): If set to true, redo the process and overwrites the previously generated CSV, otherwise no process is done, just returns the existing one.
+        overwrite_file (bool, optional): If set to true, redo the process and overwrites the previously generated CSV,
+            otherwise no process is done, just returns the existing one.
 
     Returns:
         DataFrame: A dataframe with the top games on Google Play.

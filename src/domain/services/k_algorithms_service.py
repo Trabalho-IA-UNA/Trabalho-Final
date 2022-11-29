@@ -16,7 +16,7 @@ def knn(dataset: pd.DataFrame, target: str, num_neighbors:int, dataset_usage: fl
         dataset_usage (float): Percentage of the dataframe (0-1) to use for training.
 
     Returns:
-        KNNResult: A class object containig results data.
+        KNNResult: A class object containing results data.
     """
     
     result = KNNResult()

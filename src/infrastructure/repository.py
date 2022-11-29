@@ -1,12 +1,13 @@
 import pandas as pd
 
 
-def import_dataset(dataset_path, separator, cols = None):
+def import_dataset(dataset_path, separator, cols=None):
     """Imports the CSV file from the specified path.
 
     Args:
         dataset_path (str): The path to the file to be read.
         separator (str): The separator character of the CSV.
+        cols
 
     Returns:
         DataFrame: A dataframe with the content of the CSV file.

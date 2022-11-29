@@ -16,12 +16,12 @@ def decision_tree(dataset: pd.DataFrame, target: str, tree_depth: int, dataset_u
         dataset_usage (float): Percentage of the dataframe (0-1) to use for training.
 
     Returns:
-        DecisionTreeResult: A class object containig results data.
+        DecisionTreeResult: A class object containing results data.
     """
     result = DecisionTreeResult()
     
     # x = training resources (predictor), y = target (predicted)
-    x = dataset.drop([target],axis=1)
+    x = dataset.drop([target], axis=1)
     y = dataset[target]
     
     x_train, x_test, y_train, y_test = train_test_split(x.values, y.values, test_size=dataset_usage, random_state=0)
