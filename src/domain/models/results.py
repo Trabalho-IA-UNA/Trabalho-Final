@@ -8,7 +8,7 @@ class Report:
         self.confusion_matrix = []
         self.score = 0
         
-    def print_reports(self):
+    def print_reports(self, is_classification = True):
         print("-> Dataset Normalizado usado para treinamento:\n")
         
         _max_col_len = max([len(col) for col in self.normalized_data])
@@ -19,16 +19,18 @@ class Report:
             _index = str(i+1)
             print(' ' + _index + ' '*(3-len(_index)), col, ' '*(_max_col_len - len(col)), f'- {self.normalized_data[col].dtype}')
         
-        print('\n-> Relatório de Classificação:\n')
-        print(self.classification_report)
+        if is_classification:
+            print('\n-> Relatório de Classificação:\n')
+            print(self.classification_report)
         
         print(f"Precisão: {self.score} ({round(self.score*100, 2)}%)")
         
-        print('\n-> Matriz de Confusão:\n')
-        print('V Pos | F Pos')
-        print('F Neg | V Neg')
-        print('')
-        print(self.confusion_matrix)
+        if is_classification:
+            print('\n-> Matriz de Confusão:\n')
+            print('V Pos | F Pos')
+            print('F Neg | V Neg')
+            print('')
+            print(self.confusion_matrix)
          
 
 class LinearRegressionResult(Report):
@@ -54,7 +56,7 @@ class LinearRegressionResult(Report):
     def print_overview(self):
         print("\n...Regressão Linear Finalizada...\n")
         
-        self.print_reports()
+        self.print_reports(False)
            
         print('\n-> Coeficientes:\n')
         print(self.coefficients)
