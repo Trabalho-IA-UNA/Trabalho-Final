@@ -42,8 +42,6 @@ def linear(dataset: pd.DataFrame, target:str, dataset_usage: float) -> LinearReg
     result.linear_reg_model = linear_model
     result.normalized_data = dataset
     result.score = linear_model.score(x_test, y_test)
-    result.classification_report = classification_report(y_test,predictions)
-    result.confusion_matrix = confusion_matrix(y_test, predictions, labels=[True, False])
     
     result.coefficients = coeff
     result.MAE_metrics = metrics.mean_absolute_error(y_test, predictions)

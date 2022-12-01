@@ -7,5 +7,4 @@ repo_appservice.clear_temp()
 
 df = repo_appservice.get_treated_dataset()
 
-tree = tree_appservice.decision_tree(df, open_file=True)
-tree.print_overview()
+kmeans = k_appservice.kmeans(df)
