@@ -3,7 +3,6 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn import metrics
-from sklearn.metrics import classification_report, confusion_matrix
 
 from domain.models.results import LinearRegressionResult, LogisticRegressionResult
 
@@ -86,8 +85,8 @@ def logistic(dataset: pd.DataFrame, target:str, dataset_usage: float) -> Logisti
     result.logistic_reg_model = logistic_model
     result.normalized_data = dataset
     result.score = logistic_model.score(x_test, y_test)
-    result.classification_report = classification_report(y_test,predictions)
-    result.confusion_matrix = confusion_matrix(y_test, predictions, labels=[True, False])
+    result.classification_report = metrics.classification_report(y_test,predictions)
+    result.confusion_matrix = metrics.confusion_matrix(y_test, predictions, labels=[True, False])
     
     return result
     
